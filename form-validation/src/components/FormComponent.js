@@ -12,18 +12,25 @@ const FormComponent = () => {
   const [errorPassword, setErrorPassword] = useState("");
   const [errorRePassword, setErrorRePassword] = useState("");
 
+  const [userNameColor, setUserNameColor] = useState("");
+  const [emailColor, setEmailColor] = useState("");
+
   const validateForm = (e) => {
     e.preventDefault(); // ไม่ให้กด submit แลวข้อมลหาย
     if (userName.length > 8) {
       setErrorUseName("");
+      setUserNameColor("green");
     } else {
       setErrorUseName("กรุณาป้อนชื่อผู้ใช้จำนวนมากกว่า 8 ตัวอักษร"); // se error msg
+      setUserNameColor("red");
     }
 
     if (email.includes("@")) {
       setErrorEmail("");
+      setEmailColor("green");
     } else {
       setErrorEmail("รูปแบบอีเมลไม่ถูกต้อง");
+      setEmailColor("red");
     }
   };
 
@@ -37,8 +44,9 @@ const FormComponent = () => {
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
+            style={{ borderColor: userNameColor }}
           />
-          <small> {errorUserName}</small>
+          <small style={{ color: userNameColor }}> {errorUserName}</small>
         </div>
 
         <div className="form-control">
@@ -47,8 +55,9 @@ const FormComponent = () => {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            style={{ borderColor: emailColor }}
           />
-          <small>{errorEmail}</small>
+          <small style={{ color: emailColor }}>{errorEmail}</small>
         </div>
 
         <div className="form-control">
