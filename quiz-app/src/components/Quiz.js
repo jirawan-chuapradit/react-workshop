@@ -1,10 +1,19 @@
-
+import { useState } from "react";
+import QuestionsData from "../data/QuestionsData";
 const Quiz = () => {
-    return (
-        <div className="quiz">
-            <h1>Quiz component</h1>
-        </div>
-    )
+  // console.log(QuestionsData)
+  const [current, setCurrent] = useState(0);
+  return (
+    <div className="quiz">
+      <h1>{QuestionsData[current].question}</h1>
+      <div className="choices">
+        <button>{QuestionsData[current].A}</button>
+        <button>{QuestionsData[current].B}</button>
+        <button>{QuestionsData[current].C}</button>
+        <button>{QuestionsData[current].D}</button>
+      </div>
+    </div>
+  );
 };
 
 export default Quiz;
