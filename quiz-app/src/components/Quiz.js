@@ -1,9 +1,35 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "../App";
 import QuestionsData from "../data/QuestionsData";
 const Quiz = () => {
-  // console.log(QuestionsData)
+  console.log(QuestionsData);
   const [current, setCurrent] = useState(0);
   const [selectChoice, setSelectChoice] = useState("");
+  const { score, setScore, setAppState } = useContext(DataContext);
+  useEffect(() => {
+    checkAnswer();
+  }, [selectChoice]);
+
+  const checkAnswer = () => {
+    if (selectChoice !== "") {
+      if (selectChoice === QuestionsData[current].answer) {
+        setScore(score + 1);
+        nextQuestion();
+      } else {
+        console.log("false");
+        nextQuestion();
+      }
+    }
+  };
+
+  const nextQuestion = () => {
+    setSelectChoice("");
+    if (current === QuestionsData.length - 1) {
+      setAppState("score");
+      return
+    }
+    setCurrent(current + 1);
+  };
   return (
     <div className="quiz">
       <h1>{QuestionsData[current].question}</h1>
