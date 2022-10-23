@@ -8,6 +8,7 @@ const Quiz = () => {
   const { score, setScore, setAppState } = useContext(DataContext);
   useEffect(() => {
     checkAnswer();
+    // eslint-disable-next-line
   }, [selectChoice]);
 
   const checkAnswer = () => {
