@@ -27,3 +27,8 @@ main{
 main img{
   width: 50%;
 }
+
+header.dark{
+  background-color: #121213;
+  color: orange;
+}

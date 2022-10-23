@@ -4,14 +4,12 @@ import { ThemeContext } from "../App";
 const Title = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const toggleSwitch = (checked) => {
-    setTheme(
-        theme === "light" ? "dark": "light"
-    );
+    setTheme(theme === "light" ? "dark" : "light");
   };
   return (
-    <header>
+    <header className={theme === "dark" ? "dark" : "light"}>
       <span>Mode [{theme}]</span>
-      <Switch onChange={toggleSwitch} checked={theme==="dark"} />
+      <Switch onChange={toggleSwitch} checked={theme === "dark"} />
     </header>
   );
 };
