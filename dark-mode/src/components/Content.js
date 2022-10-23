@@ -11,7 +11,7 @@ const Content = () => {
         <h1>KongRuksiam official</h1>
         <p>DarkMode Workshop</p>
       </div>
-      <img src={light} alt="Logo" />
+      <img src={theme==="dark"?dark:light} alt="Logo" />
     </main>
   );
 };
